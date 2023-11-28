@@ -29,17 +29,30 @@ inputClick.textContent = "Click"
 
 //adding monster to list. capture value of 3 input.values in formElement. and set it to 3 keys of data, create new object
 monsterForm.addEventListener('submit', e => {
-    e.preventDefault()
-    console.log(e.target[0].value)
+e.preventDefault()
 
     const newMonsterInfo = {
         name: e.target[0].value,
         age: e.target[1].value,
         description: e.target[2].value
     }
-    renderMonster(newMonsterInfo)
-    monsterForm.reset()
+    renderMonster(newMonsterInfo);
+
+    // fetch("http://127.0.0.1:3000/monsters", {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify(newMonsterInfo)
+    //     })
+    //     .then(resp => resp.json())
+    //     .then(newMonster => {
+    //         renderMonster(newMonster);
+    //     })
+       
+
 })
+
 
 
 const forwardButton = document.getElementById('forward')
@@ -49,10 +62,9 @@ forwardButton.addEventListener('click', e => {
     .then(secondMonsterList => {
         secondMonsterList.forEach(monster => {
             renderMonster(monster)
-
         })
-    
     })
+
 })
 
 
